@@ -4,5 +4,12 @@
 
 DEFAULT_FOLDER = crkbd/rev1
 
-RGBLIGHT_SUPPORTED = yes
-RGB_MATRIX_SUPPORTED = yes
+RGBLIGHT_SUPPORTED = no
+RGB_MATRIX_SUPPORTED = no
+
+OLED_ENABLE = yes
+SRC += oled/oled-bongocat.c oled/oled-icons.c
+
+LTO_ENABLE = yes
+
+CAPS_WORD_ENABLE = yes
