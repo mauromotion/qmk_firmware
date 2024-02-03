@@ -41,3 +41,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define OLED_FONT_H "oled/oled-font.c"
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+
+#define TAPPING_TOGGLE 2
