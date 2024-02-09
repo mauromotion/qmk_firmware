@@ -26,9 +26,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT,    KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                           KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        LCTL_T(KC_TAB), LALT_T(KC_Z), KC_X, KC_C, KC_V, KC_B,                       KC_N,   KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_NUBS,
+        LCTL_T(KC_TAB), LALT_T(KC_Z), KC_X, KC_C, KC_V, KC_B,                       KC_N,   KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                      KC_LGUI, LT(1,KC_TAB), KC_SPC,    KC_ENT,   MO(2),   TT(4)
+                                      KC_LGUI, LT(1,KC_TAB), KC_SPC,    KC_ENT,   LT(2,KC_BSPC),   TT(4)
                                       //`--------------------------'  `--------------------------'
     ),
 
@@ -80,6 +80,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
     )
 };
+
+// Combos
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(jk_combo, KC_ESC)
+};
+// End of Combos //
 
 #if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {

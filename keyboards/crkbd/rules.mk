@@ -13,3 +13,5 @@ SRC += oled/oled-bongocat.c oled/oled-icons.c
 LTO_ENABLE = yes
 
 CAPS_WORD_ENABLE = yes
+
+COMBO_ENABLE = yes
