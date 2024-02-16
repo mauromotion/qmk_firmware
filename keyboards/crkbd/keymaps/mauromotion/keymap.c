@@ -48,11 +48,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_ESC,   KC_1,   KC_2,   KC_3,    KC_DLR,  KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,  KC_4,   KC_5,   KC_6,    KC_LBRC,  KC_RBRC,                     KC_BSLS, KC_MINS, KC_EQL,  XXXXXXX, XXXXXXX, KC_GRV,
+      KC_LSFT,  KC_4,   KC_5,   KC_6,    KC_0,  XXXXXXX,                     KC_BSLS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     LCTL_T(KC_TAB), KC_7, KC_8, KC_9,    KC_LCBR,  KC_RCBR,                     KC_PIPE, KC_UNDS, KC_PLUS, XXXXXXX, XXXXXXX, KC_NUBS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_0,   MO(3),    KC_SPC,    KC_ENT,  _______, KC_LALT
+                                          KC_LGUI,   MO(3),    KC_SPC,    KC_ENT,  _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
     ),
 
