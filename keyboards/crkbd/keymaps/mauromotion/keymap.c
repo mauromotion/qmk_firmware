@@ -28,19 +28,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         LCTL_T(KC_TAB), LALT_T(KC_Z), KC_X, KC_C, KC_V, KC_B,                       KC_N,   KC_M,   KC_COMM, KC_DOT, KC_SLSH, TT(04),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                      KC_LGUI, LT(1,KC_TAB), KC_SPC,    KC_ENT,   LT(2,KC_BSPC),   KC_LALT
+                                      KC_LGUI, LT(1,KC_TAB), KC_SPC,    KC_ENT,   LT(2,KC_BSPC),   LALT_T(KC_DEL)
                                       //`--------------------------'  `--------------------------'
     ),
 
 	[1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-    LGUI(KC_TAB), LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_BTN1, KC_BTN2,         KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLD, KC_VOLU,
+    KC_ESC, XXXXXXX, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_BTN2,               KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLD, KC_VOLU,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    LSFT_T(KC_DEL), LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), LGUI(KC_F), KC_WH_U,    KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_WH_L, KC_WH_R,
+    LSFT_T(KC_DEL), LGUI(KC_0), LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), KC_WH_U,    KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_WH_L, KC_WH_R,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    KC_LCTL, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), LGUI(KC_0), KC_WH_D,           KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_MUTE, KC_MPLY,
+    LGUI(KC_TAB), KC_BTN1, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_WH_D,         KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_MUTE, KC_MPLY,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         KC_LGUI, _______, LGUI(KC_SPC),LGUI(KC_ENT),MO(3),KC_LALT
+                                         KC_LGUI, _______, LGUI(KC_SPC),LGUI(KC_ENT),MO(3),LALT_T(KC_DEL)
                                       //`--------------------------'  `--------------------------'
     ),
 
