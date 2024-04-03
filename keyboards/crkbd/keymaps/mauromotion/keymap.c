@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[1] = LAYOUT_split_3x6_3( // Lower (Navigation)
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     WS_TAB,  XXXXXXX, WS_1,    WS_2,    WS_3,    KC_BTN2,                      KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_VOLD, KC_VOLU,
+     WS_TAB,  XXXXXXX, WS_1,    WS_2,    WS_3,    KC_BTN2,                      _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     SFT_DEL, I3_PWR,  WS_4,    WS_5,    WS_6,    KC_WH_U,                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_WH_L, KC_WH_R,
+     SFT_DEL, I3_PWR,  WS_4,    WS_5,    WS_6,    KC_WH_U,                      _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LCTL, KC_BTN1, WS_7,    WS_8,    I3_LCK,  KC_WH_D,                      KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_MUTE, KC_MPLY,
+     KC_LCTL, KC_BTN1, WS_7,    WS_8,    I3_LCK,  KC_WH_D,                      _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          _______, _______, I3_ROFI,    I3_TERM, MO(3),   ALT_DEL
                                       //`--------------------------'  `--------------------------'
