@@ -23,15 +23,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Left-hand home row mods
 #define GUI_A LGUI_T(KC_A)
-#define ALT_S LALT_T(KC_S)
-#define CTL_D LCTL_T(KC_D)
-#define SFT_F LSFT_T(KC_F)
+#define ALT_R LALT_T(KC_R)
+#define CTL_S LCTL_T(KC_S)
+#define SFT_TEE LSFT_T(KC_T)
 
 // Right-hand home row mods
-#define SFT_J RSFT_T(KC_J)
-#define CTL_K RCTL_T(KC_K)
-#define ALT_L LALT_T(KC_L)
-#define GUI_SCLN RGUI_T(KC_SCLN)
+#define SFT_N RSFT_T(KC_N)
+#define CTL_E RCTL_T(KC_E)
+#define ALT_I LALT_T(KC_I)
+#define GUI_O RGUI_T(KC_O)
 
 // i3wm aliases
 #define WS_1 LGUI(KC_1)
@@ -60,13 +60,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-	[0] = LAYOUT_split_3x6_3( // Default QWERTY
+	[0] = LAYOUT_split_3x6_3( // Default Colemak-DH
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+     KC_ESC,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LSFT, GUI_A,   ALT_S,   CTL_D,   SFT_F,   KC_G,                         KC_H,    SFT_J,   CTL_K,   ALT_L,   GUI_SCLN,KC_QUOT,
+     KC_LSFT, GUI_A,   ALT_R,   CTL_S,   SFT_TEE, KC_G,                         KC_M,    SFT_N,   CTL_E,   ALT_I,   GUI_O,   KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_TAB, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TT(05),
+     CTL_TAB, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, TT(05),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          GUI_ESC, LW_TAB,  KC_SPC,     SYM_ENT, RA_BSPC, ALT_DEL
                                       //`--------------------------'  `--------------------------'
@@ -135,24 +135,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Combos //
-const uint16_t PROGMEM jk_combo[] = {SFT_J, CTL_K, COMBO_END};
-const uint16_t PROGMEM df_combo[] = {CTL_D, SFT_F, COMBO_END};
-const uint16_t PROGMEM rt_combo[] = {KC_R, KC_T, COMBO_END};
-const uint16_t PROGMEM fg_combo[] = {SFT_F, KC_G, COMBO_END};
-const uint16_t PROGMEM vb_combo[] = {KC_V, KC_B, COMBO_END};
-const uint16_t PROGMEM yu_combo[] = {KC_Y, KC_U, COMBO_END};
-const uint16_t PROGMEM hj_combo[] = {KC_H, SFT_J, COMBO_END};
-const uint16_t PROGMEM nm_combo[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM ne_combo[] = {SFT_N, CTL_E, COMBO_END};
+const uint16_t PROGMEM st_combo[] = {CTL_S, SFT_TEE, COMBO_END};
+const uint16_t PROGMEM pb_combo[] = {KC_P, KC_B, COMBO_END};
+const uint16_t PROGMEM tg_combo[] = {SFT_TEE, KC_G, COMBO_END};
+const uint16_t PROGMEM dv_combo[] = {KC_D, KC_V, COMBO_END};
+const uint16_t PROGMEM jl_combo[] = {KC_J, KC_L, COMBO_END};
+const uint16_t PROGMEM mn_combo[] = {KC_M, SFT_N, COMBO_END};
+const uint16_t PROGMEM kh_combo[] = {KC_K, KC_H, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(jk_combo, KC_ESC),
-    COMBO(df_combo, KC_DEL),
-    COMBO(rt_combo, KC_LPRN),
-    COMBO(fg_combo, KC_LBRC),
-    COMBO(vb_combo, KC_LCBR),
-    COMBO(yu_combo, KC_RPRN),
-    COMBO(hj_combo, KC_RBRC),
-    COMBO(nm_combo, KC_RCBR)
+    COMBO(ne_combo, KC_ESC),
+    COMBO(st_combo, KC_DEL),
+    COMBO(pb_combo, KC_LPRN),
+    COMBO(tg_combo, KC_LBRC),
+    COMBO(dv_combo, KC_LCBR),
+    COMBO(jl_combo, KC_RPRN),
+    COMBO(mn_combo, KC_RBRC),
+    COMBO(kh_combo, KC_RCBR)
 };
 // End of Combos //
 
