@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CTL_E RCTL_T(KC_E)
 #define ALT_I LALT_T(KC_I)
 #define GUI_O RGUI_T(KC_O)
-#define GUI_QOT RGUI_T(UK_QUOT)
+#define SFT_QOT RGUI_T(UK_QUOT)
 
 // i3wm aliases
 #define WS_1 LGUI(KC_1)
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      _______, KC_LBRC, KC_1,    KC_2,    KC_3,    KC_RBRC,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LSFT, KC_0,    KC_4,    KC_5,    KC_6,    KC_EQL,                       _______, KC_RSFT, KC_RCTL, KC_LALT, GUI_QOT, KC_AT,
+     KC_LSFT, KC_0,    KC_4,    KC_5,    KC_6,    KC_EQL,                       _______, SFT_QOT, KC_RCTL, KC_LALT, KC_RGUI, KC_AT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_LCTL, UK_GRV,  KC_7,    KC_8,    KC_9,    KC_NUBS,                      _______, _______, _______, _______, _______, CW_TOGG,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
