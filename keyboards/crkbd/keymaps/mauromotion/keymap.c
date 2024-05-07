@@ -32,6 +32,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CTL_E RCTL_T(KC_E)
 #define ALT_I LALT_T(KC_I)
 #define GUI_O RGUI_T(KC_O)
+#define SFT_MINS RSFT_T(KC_MINS)
+#define CTL_EQL RCTL_T(KC_EQL)
 
 // i3wm aliases
 #define WS_1 LGUI(KC_1)
@@ -88,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      _______, KC_LBRC, KC_1,    KC_2,    KC_3,    KC_RBRC,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LSFT, KC_0,    KC_4,    KC_5,    KC_6,    KC_PLUS,                      _______, KC_RSFT, KC_RCTL, KC_LALT, KC_RGUI, KC_AT,
+     KC_LSFT, KC_0,    KC_4,    KC_5,    KC_6,    KC_PLUS,                      _______, SFT_MINS, CTL_EQL, KC_LALT, KC_RGUI, KC_AT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LCTL, KC_PIPE,  KC_7,    KC_8,    KC_9,    KC_NUBS,                      _______, _______, _______, _______, KC_QUES, CW_TOGG,
+     KC_LCTL, KC_PIPE,  KC_7,    KC_8,    KC_9,    KC_NUBS,                     _______, KC_UNDS,  KC_PLUS, _______, KC_QUES, CW_TOGG,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          GUI_ESC, MO(3),   UK_UNDS,    KC_ENT,  _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
@@ -137,22 +139,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Combos //
 const uint16_t PROGMEM ne_combo[] = {SFT_N, CTL_E, COMBO_END};
 const uint16_t PROGMEM st_combo[] = {CTL_S, SFT_TEE, COMBO_END};
-const uint16_t PROGMEM pb_combo[] = {KC_P, KC_B, COMBO_END};
-const uint16_t PROGMEM tg_combo[] = {SFT_TEE, KC_G, COMBO_END};
-const uint16_t PROGMEM dv_combo[] = {KC_D, KC_V, COMBO_END};
-const uint16_t PROGMEM jl_combo[] = {KC_J, KC_L, COMBO_END};
-const uint16_t PROGMEM mn_combo[] = {KC_M, SFT_N, COMBO_END};
-const uint16_t PROGMEM kh_combo[] = {KC_K, KC_H, COMBO_END};
+/* const uint16_t PROGMEM pb_combo[] = {KC_P, KC_B, COMBO_END}; */
+/* const uint16_t PROGMEM tg_combo[] = {SFT_TEE, KC_G, COMBO_END}; */
+/* const uint16_t PROGMEM dv_combo[] = {KC_D, KC_V, COMBO_END}; */
+/* const uint16_t PROGMEM jl_combo[] = {KC_J, KC_L, COMBO_END}; */
+/* const uint16_t PROGMEM mn_combo[] = {KC_M, SFT_N, COMBO_END}; */
+/* const uint16_t PROGMEM kh_combo[] = {KC_K, KC_H, COMBO_END}; */
 
 combo_t key_combos[] = {
     COMBO(ne_combo, KC_ESC),
     COMBO(st_combo, KC_DEL),
-    COMBO(pb_combo, KC_LPRN),
-    COMBO(tg_combo, KC_LBRC),
-    COMBO(dv_combo, KC_LCBR),
-    COMBO(jl_combo, KC_RPRN),
-    COMBO(mn_combo, KC_RBRC),
-    COMBO(kh_combo, KC_RCBR)
+    /* COMBO(pb_combo, KC_LPRN), */
+    /* COMBO(tg_combo, KC_LBRC), */
+    /* COMBO(dv_combo, KC_LCBR), */
+    /* COMBO(jl_combo, KC_RPRN), */
+    /* COMBO(mn_combo, KC_RBRC), */
+    /* COMBO(kh_combo, KC_RCBR) */
 };
 // End of Combos //
 
