@@ -137,7 +137,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // Macros //
-
 enum custom_keycodes {
   COPY_MACRO = SAFE_RANGE,
   CUT_MACRO = SAFE_RANGE + 1,
@@ -160,6 +159,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         SEND_STRING(SS_LCTL("v"));
       }
+      break;
+    default:
+      // No action
       break;
   }
   return true;
