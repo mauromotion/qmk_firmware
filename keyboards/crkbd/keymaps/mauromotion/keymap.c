@@ -138,9 +138,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Macros //
 
-// Copy
 enum custom_keycodes {
-  COPY_MACRO = SAFE_RANGE
+  COPY_MACRO = SAFE_RANGE,
+  CUT_MACRO = SAFE_RANGE + 1,
+  PST_MACRO = SAFE_RANGE + 2
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -150,33 +151,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING(SS_LCTL("c"));
       }
       break;
-  }
-  return true;
-};
-
-// Cut
-enum custom_keycodes {
-  CUT_MACRO = SAFE_RANGE
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
     case CUT_MACRO:
       if (record->event.pressed) {
         SEND_STRING(SS_LCTL("x"));
       }
       break;
-  }
-  return true;
-};
-
-// Paste
-enum custom_keycodes {
-  PST_MACRO = SAFE_RANGE
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
     case PST_MACRO:
       if (record->event.pressed) {
         SEND_STRING(SS_LCTL("v"));
