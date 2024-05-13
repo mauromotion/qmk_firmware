@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      _______, KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,                       KC_LT,   KC_LPRN, KC_LCBR, KC_LBRC, _______, KC_AT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, UK_GRV, KC_AMPR, KC_ASTR, UK_HASH, PIPE,                         KC_GT,   KC_RPRN, KC_RCBR, KC_RBRC, _______, KC_NUBS,
+     _______, UK_GRV,  KC_AMPR, KC_ASTR, UK_HASH, PIPE,                         KC_GT,   KC_RPRN, KC_RCBR, KC_RBRC, _______, KC_NUBS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          KC_LPRN, KC_RPRN, KC_MINS,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -136,25 +136,73 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+// Macros //
+
+// Copy
+enum custom_keycodes {
+  COPY_MACRO = SAFE_RANGE
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case COPY_MACRO:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("c"));
+      }
+      break;
+  }
+  return true;
+};
+
+// Cut
+enum custom_keycodes {
+  CUT_MACRO = SAFE_RANGE
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case CUT_MACRO:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("x"));
+      }
+      break;
+  }
+  return true;
+};
+
+// Paste
+enum custom_keycodes {
+  PST_MACRO = SAFE_RANGE
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case PST_MACRO:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("v"));
+      }
+      break;
+  }
+  return true;
+};
+
 // Combos //
-const uint16_t PROGMEM ne_combo[] = {SFT_N, CTL_E, COMBO_END};
-const uint16_t PROGMEM st_combo[] = {CTL_S, SFT_TEE, COMBO_END};
-/* const uint16_t PROGMEM pb_combo[] = {KC_P, KC_B, COMBO_END}; */
-/* const uint16_t PROGMEM tg_combo[] = {SFT_TEE, KC_G, COMBO_END}; */
-/* const uint16_t PROGMEM dv_combo[] = {KC_D, KC_V, COMBO_END}; */
-/* const uint16_t PROGMEM jl_combo[] = {KC_J, KC_L, COMBO_END}; */
-/* const uint16_t PROGMEM mn_combo[] = {KC_M, SFT_N, COMBO_END}; */
-/* const uint16_t PROGMEM kh_combo[] = {KC_K, KC_H, COMBO_END}; */
+const uint16_t PROGMEM esc_combo[] = {SFT_N, CTL_E, COMBO_END};
+const uint16_t PROGMEM del_combo[] = {CTL_S, SFT_TEE, COMBO_END};
+const uint16_t PROGMEM cw_combo[] = {KC_D, KC_H, COMBO_END};
+const uint16_t PROGMEM col_combo[] = {KC_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM copy_combo[] = {KC_Z, KC_C, COMBO_END};
+const uint16_t PROGMEM cut_combo[] = {KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM paste_combo[] = {KC_Z, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(ne_combo, KC_ESC),
-    COMBO(st_combo, KC_DEL),
-    /* COMBO(pb_combo, KC_LPRN), */
-    /* COMBO(tg_combo, KC_LBRC), */
-    /* COMBO(dv_combo, KC_LCBR), */
-    /* COMBO(jl_combo, KC_RPRN), */
-    /* COMBO(mn_combo, KC_RBRC), */
-    /* COMBO(kh_combo, KC_RCBR) */
+    COMBO(esc_combo, KC_ESC),
+    COMBO(del_combo, KC_DEL),
+    COMBO(cw_combo, CW_TOGG),
+    COMBO(col_combo, KC_COLN),
+    COMBO(copy_combo, COPY_MACRO),
+    COMBO(cut_combo, CUT_MACRO),
+    COMBO(paste_combo, PST_MACRO),
 };
 // End of Combos //
 
