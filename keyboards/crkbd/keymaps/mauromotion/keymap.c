@@ -45,10 +45,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS_7 LGUI(KC_7)
 #define WS_8 LGUI(KC_8)
 #define I3_LCK LGUI(KC_9)
-#define I3_PWR LGUI(KC_0)
 #define WS_TAB LGUI(KC_TAB)
 #define I3_ROFI LGUI(KC_SPC)
-#define I3_TERM LGUI(KC_ENT)
 
 // General aliases
 #define CTL_TAB LCTL_T(KC_TAB)

@@ -1,1 +1,10 @@
-# This file intentionally left blank
+BOOTLOADER = atmel-dfu
+DEFAULT_FOLDER = ferris/sweep
+
+RGBLIGHT_SUPPORTED = no
+RGB_MATRIX_SUPPORTED = no
+
+CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes
+
+LTO_ENABLE = yes
