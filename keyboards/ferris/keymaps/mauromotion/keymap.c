@@ -155,6 +155,41 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 };
 
+// Achordion customisation
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+  switch (tap_hold_keycode) {
+    case GUI_A:
+      if (other_keycode == LW_TAB || other_keycode == KC_F || other_keycode == KC_G || other_keycode == KC_SPC || other_keycode == KC_B) { return true; }
+      break;
+
+    case SFT_TEE:
+      if (other_keycode == KC_G) { return true; }
+      break;
+
+    case CTL_S:
+      if (other_keycode == KC_Z || KC_X || KC_C || KC_D || KC_V) { return true; }
+      break;
+
+    case LW_TAB:
+      if (other_keycode == WS_1 || WS_2 || WS_3 || WS_4 || WS_5 || WS_6 || WS_7 || WS_8) { return true; }
+      break;
+
+    case RA_BSPC:
+      if (other_keycode > KC_Z) { return true; }
+      break;
+
+    case SYM_ENT:
+      if (other_keycode > KC_Z) { return true; }
+      break;
+  }
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+
 // Combos //
 const uint16_t PROGMEM esc_combo[] = {SFT_N, CTL_E, COMBO_END};
 const uint16_t PROGMEM del_combo[] = {CTL_S, SFT_TEE, COMBO_END};
