@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include <keymap_uk.h>
+#include "features/achordion.h"
 
 // Home Row Mods aliases //
 
@@ -52,6 +53,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SYM_ENT LT(4,KC_ENT)
 #define RA_BSPC LT(2,KC_BSPC)
 #define PIPE RSFT(KC_NUBS)
+
+// Achordion
+void matrix_scan_user(void) {
+  achordion_task();
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -123,7 +129,9 @@ enum custom_keycodes {
   PST_MACRO = SAFE_RANGE + 2
 };
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_achordion(keycode, record)) { return false; }
   switch (keycode) {
     case COPY_MACRO:
       if (record->event.pressed) {
