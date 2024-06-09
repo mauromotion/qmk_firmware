@@ -18,6 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include <keymap_uk.h>
+#include "features/achordion.h"
 
 // Home Row Mods aliases //
 
@@ -46,7 +47,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS_8 LGUI(KC_8)
 #define I3_LCK LGUI(KC_9)
 #define WS_TAB LGUI(KC_TAB)
-#define I3_ROFI LGUI(KC_SPC)
 
 // General aliases
 #define CTL_TAB LCTL_T(KC_TAB)
@@ -57,6 +57,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SYM_ENT LT(4,KC_ENT)
 #define RA_BSPC LT(2,KC_BSPC)
 #define PIPE RSFT(KC_NUBS)
+
+// Achordion
+void matrix_scan_user(void) {
+  achordion_task();
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -80,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_LCTL, KC_BTN1, WS_7,    WS_8,    I3_LCK,  KC_WH_D,                      _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         _______, _______, I3_ROFI,    KC_SLSH, MO(3),   ALT_DEL
+                                         _______, _______, _______,    KC_SLSH, MO(3),   ALT_DEL
                                       //`--------------------------'  `--------------------------'
     ),
 
@@ -90,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_LSFT, KC_0,    KC_4,    KC_5,    KC_6,    KC_PLUS,                      _______, SFT_MINS, CTL_EQL, KC_LALT, KC_RGUI, KC_AT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     KC_LCTL, KC_PIPE,  KC_7,    KC_8,    KC_9,    KC_NUBS,                     _______, KC_UNDS,  KC_PLUS, _______, KC_QUES, CW_TOGG,
+     KC_LCTL, KC_PIPE,  KC_7,    KC_8,    KC_9,   PIPE,                         _______, KC_UNDS,  KC_PLUS, _______, KC_QUES, CW_TOGG,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          GUI_ESC, MO(3),   UK_UNDS,    KC_ENT,  _______, KC_LALT
                                       //`--------------------------'  `--------------------------'
@@ -114,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      _______, KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,                       KC_LT,   KC_LPRN, KC_LCBR, KC_LBRC, _______, KC_AT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     _______, UK_GRV,  KC_AMPR, KC_ASTR, UK_HASH, PIPE,                         KC_GT,   KC_RPRN, KC_RCBR, KC_RBRC, _______, KC_NUBS,
+     _______, UK_GRV,  KC_AMPR, KC_ASTR, UK_HASH, KC_NUBS,                      KC_GT,   KC_RPRN, KC_RCBR, KC_RBRC, _______, KC_NUBS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          KC_LPRN, KC_RPRN, KC_MINS,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -142,6 +147,7 @@ enum custom_keycodes {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_achordion(keycode, record)) { return false; }
   switch (keycode) {
     case COPY_MACRO:
       if (record->event.pressed) {
@@ -164,6 +170,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 };
+
+// Achordion customisation
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) {
+  switch (tap_hold_keycode) {
+    case GUI_A:
+      if (other_keycode == LW_TAB || other_keycode == KC_F || other_keycode == KC_G || other_keycode == KC_SPC || other_keycode == KC_B) { return true; }
+      break;
+
+    case SFT_TEE:
+      if (other_keycode == KC_G) { return true; }
+      break;
+
+    case CTL_S:
+      if (other_keycode == KC_Z || other_keycode == KC_X || other_keycode == KC_C || other_keycode == KC_D || other_keycode == KC_V || other_keycode == LW_TAB) { return true; }
+      break;
+
+    case LW_TAB:
+      if (other_keycode == WS_1 || WS_2 || WS_3 || WS_4 || WS_5 || WS_6 || WS_7 || WS_8 || I3_LCK || KC_DEL) { return true; }
+      break;
+
+    case RA_BSPC:
+      if (other_keycode > KC_Z) { return true; }
+      break;
+
+    case SYM_ENT:
+      if (other_keycode > KC_Z) { return true; }
+      break;
+  }
+  // Otherwise, follow the opposite hands rule.
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
 
 // Combos //
 const uint16_t PROGMEM esc_combo[] = {SFT_N, CTL_E, COMBO_END};

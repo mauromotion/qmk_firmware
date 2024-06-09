@@ -9,6 +9,7 @@ RGB_MATRIX_SUPPORTED = no
 
 OLED_ENABLE = yes
 SRC += oled/oled-bongocat.c oled/oled-icons.c
+SRC += features/achordion.c
 
 LTO_ENABLE = yes
 
