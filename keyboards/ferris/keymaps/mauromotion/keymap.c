@@ -46,7 +46,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS_7 LGUI(KC_7)
 #define WS_8 LGUI(KC_8)
 #define I3_LCK LGUI(KC_9)
-#define I3_ROFI LGUI(KC_SPC)
 
 // General aliases
 #define LW_TAB LT(1,KC_TAB)
@@ -81,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_BTN1, WS_7,    WS_8,    I3_LCK,  KC_WH_D,                      _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                         _______, I3_ROFI,    KC_SLSH, MO(3)
+                                         _______, _______,    KC_SLSH, MO(3)
                                       //`-----------------'  `--------------'
     ),
 
@@ -91,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_0,    KC_4,    KC_5,    KC_6,    KC_PLUS,                      _______, SFT_MINS, CTL_EQL, KC_LALT, KC_RGUI,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     KC_PIPE,  KC_7,    KC_8,    KC_9,   KC_NUBS,                      _______, KC_UNDS,  KC_PLUS, _______, KC_QUES,
+     KC_PIPE,  KC_7,    KC_8,    KC_9,   PIPE,                         _______, KC_UNDS,  KC_PLUS, _______, KC_QUES,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                          MO(3),   UK_UNDS,    KC_ENT,  _______
                                       //`-----------------'  `----------------'
@@ -115,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,                       KC_LT,   KC_LPRN, KC_LCBR, KC_LBRC, _______,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     UK_GRV,  KC_AMPR, KC_ASTR, UK_HASH, PIPE,                         KC_GT,   KC_RPRN, KC_RCBR, KC_RBRC, _______,
+     UK_GRV,  KC_AMPR, KC_ASTR, UK_HASH, KC_NUBS,                         KC_GT,   KC_RPRN, KC_RCBR, KC_RBRC, _______,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                          KC_RPRN, KC_MINS,    _______, _______
                                       //`-----------------'  `----------------'
@@ -170,11 +169,11 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       break;
 
     case CTL_S:
-      if (other_keycode == KC_Z || KC_X || KC_C || KC_D || KC_V) { return true; }
+      if (other_keycode == KC_Z || other_keycode == KC_X || other_keycode == KC_C || other_keycode == KC_D || other_keycode == KC_V || other_keycode == LW_TAB) { return true; }
       break;
 
     case LW_TAB:
-      if (other_keycode == WS_1 || WS_2 || WS_3 || WS_4 || WS_5 || WS_6 || WS_7 || WS_8) { return true; }
+      if (other_keycode == WS_1 || WS_2 || WS_3 || WS_4 || WS_5 || WS_6 || WS_7 || WS_8 || I3_LCK || KC_DEL) { return true; }
       break;
 
     case RA_BSPC:
