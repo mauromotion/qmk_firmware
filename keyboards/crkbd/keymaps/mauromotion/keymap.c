@@ -186,23 +186,28 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       break;
 
     case CTL_S:
-      if (other_keycode == KC_Z || other_keycode == KC_X || other_keycode == KC_C || other_keycode == KC_D || other_keycode == KC_V || other_keycode == LW_TAB) { return true; }
+      if (other_keycode == KC_Z || other_keycode == KC_X || other_keycode == KC_C || other_keycode == KC_D || other_keycode == KC_V || other_keycode == LW_TAB || other_keycode == KC_SPC) { return true; }
       break;
 
     case LW_TAB:
-      if (other_keycode == WS_1 || WS_2 || WS_3 || WS_4 || WS_5 || WS_6 || WS_7 || WS_8 || I3_LCK || KC_DEL) { return true; }
-      break;
-
     case RA_BSPC:
-      if (other_keycode > KC_Z) { return true; }
-      break;
-
     case SYM_ENT:
-      if (other_keycode > KC_Z) { return true; }
+      return true;
       break;
   }
   // Otherwise, follow the opposite hands rule.
   return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+// Exclude keys from tap-hold not being able to repeat
+uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
+    switch (keycode) {
+        case RA_BSPC:
+        case KC_DEL:
+            return QUICK_TAP_TERM;
+        default:
+            return 0;
+    }
 }
 
 // Combos //
