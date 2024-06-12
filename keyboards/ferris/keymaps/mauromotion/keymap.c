@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SFT_MINS RSFT_T(KC_MINS)
 #define CTL_EQL RCTL_T(KC_EQL)
 
-// i3wm aliases
+// i3wm aliases //
 #define WS_1 LGUI(KC_1)
 #define WS_2 LGUI(KC_2)
 #define WS_3 LGUI(KC_3)
@@ -47,13 +47,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS_8 LGUI(KC_8)
 #define I3_LCK LGUI(KC_9)
 
-// General aliases
+// General aliases //
 #define LW_TAB LT(1,KC_TAB)
-#define SYM_ENT LT(4,KC_ENT)
 #define RA_BSPC LT(2,KC_BSPC)
+#define SYM_ENT LT(3,KC_ENT)
 #define PIPE RSFT(KC_NUBS)
 
-// Tap dance
+// Tap dance //
 enum {
     TD_Q_ESC,
 };
@@ -65,11 +65,12 @@ tap_dance_action_t tap_dance_actions[] = {
 // Tap dance aliases
 #define Q_ESC TD(TD_Q_ESC)
 
-// Achordion
+// Achordion //
 void matrix_scan_user(void) {
   achordion_task();
 }
 
+// Layouts //
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[0] = LAYOUT_split_3x5_2( // Default Colemak-DH
@@ -92,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_BTN1, WS_7,    WS_8,    I3_LCK,  KC_WH_D,                      _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                         _______, _______,    KC_ENT, MO(3)
+                                         _______, _______,    KC_ENT, MO(4)
                                       //`-----------------'  `--------------'
     ),
 
@@ -104,23 +105,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_QUES,  KC_7,    KC_8,    KC_9,   PIPE,                         _______, _______,  _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                         MO(3),   UK_UNDS,    KC_ENT,  _______
+                                         MO(4),   UK_UNDS,    KC_ENT,  _______
                                       //`-----------------'  `----------------'
    ),
 
-	[3] = LAYOUT_split_3x5_2( // Adjust (Functions & Settings)
-  //,---------------------------------------------.                   ,--------------------------------------------.
-     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F10,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
-  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,                       KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, KC_RCTL,
-  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F12,                       XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_NUM,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                         _______, KC_SPC,     KC_ENT,  _______
-                                      //`-----------------'  `----------------'
-    ),
-
-	[4] = LAYOUT_split_3x5_2( // Symbols
+	[3] = LAYOUT_split_3x5_2( // Symbols
   //,--------------------------------------------.                    ,--------------------------------------------.
      UK_GRV,  KC_EXLM, KC_AT,   UK_PND,  _______,                      KC_MPLY, KC_VOLU, KC_VOLD, KC_MUTE, _______,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
@@ -129,6 +118,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_SLSH, KC_AMPR, KC_ASTR, UK_HASH, KC_NUBS,                      KC_GT,   KC_RPRN, KC_RCBR, KC_RBRC, _______,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                          KC_PIPE, KC_MINS,    _______, _______
+                                      //`-----------------'  `----------------'
+    ),
+
+	[4] = LAYOUT_split_3x5_2( // Adjust (Functions & Settings)
+  //,---------------------------------------------.                   ,--------------------------------------------.
+     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F10,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
+  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+     XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,                       KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, KC_RCTL,
+  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+     XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F12,                       XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_NUM,
+  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+                                         _______, KC_SPC,     KC_ENT,  _______
                                       //`-----------------'  `----------------'
     ),
 };
