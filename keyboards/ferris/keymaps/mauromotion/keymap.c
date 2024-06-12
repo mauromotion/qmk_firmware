@@ -53,6 +53,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RA_BSPC LT(2,KC_BSPC)
 #define PIPE RSFT(KC_NUBS)
 
+// Tap dance
+enum {
+    TD_Q_ESC,
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC)
+};
+
+// Tap dance aliases
+#define Q_ESC TD(TD_Q_ESC)
+
 // Achordion
 void matrix_scan_user(void) {
   achordion_task();
@@ -62,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[0] = LAYOUT_split_3x5_2( // Default Colemak-DH
   //,--------------------------------------------.                    ,--------------------------------------------.
-     KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
+     Q_ESC,   KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      GUI_A,   ALT_R,   CTL_S,   SFT_TEE, KC_G,                         KC_M,    SFT_N,   CTL_E,   ALT_I,   GUI_O,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
