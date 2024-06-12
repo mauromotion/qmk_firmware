@@ -186,7 +186,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       break;
 
     case CTL_S:
-      if (other_keycode == KC_Z || other_keycode == KC_X || other_keycode == KC_C || other_keycode == KC_D || other_keycode == KC_V || other_keycode == LW_TAB || other_keycode == KC_SPC) { return true; }
+      if (other_keycode == KC_Z || other_keycode == KC_X || other_keycode == KC_C || other_keycode == KC_D || other_keycode == KC_V || other_keycode == LW_TAB) { return true; }
       break;
 
     case LW_TAB:
