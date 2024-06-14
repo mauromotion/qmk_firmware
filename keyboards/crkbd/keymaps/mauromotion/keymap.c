@@ -178,7 +178,7 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      keyrecord_t* other_record) {
   switch (tap_hold_keycode) {
     case GUI_A:
-      if (other_keycode == LW_TAB || other_keycode == KC_F || other_keycode == KC_G || other_keycode == KC_SPC || other_keycode == KC_B) { return true; }
+      if (other_keycode == LW_TAB || other_keycode == KC_F || other_keycode == KC_G || other_keycode == KC_B || other_keycode == KC_P) { return true; }
       break;
 
     case SFT_TEE:
