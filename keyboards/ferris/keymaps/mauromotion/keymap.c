@@ -197,6 +197,9 @@ bool achordion_chord(uint16_t tap_hold_keycode,
       if (other_keycode == KC_Z || other_keycode == KC_X || other_keycode == KC_C || other_keycode == KC_D || other_keycode == KC_V || other_keycode == LW_TAB) { return true; }
       break;
 
+    case BUTT_Z:
+      if (other_keycode == KC_C || other_keycode == KC_X || other_keycode == KC_D) {return true; }
+
     case LW_TAB:
     case RA_BSPC:
     case SYM_ENT:
@@ -223,18 +226,18 @@ const uint16_t PROGMEM esc_combo[] = {SFT_N, CTL_E, COMBO_END};
 const uint16_t PROGMEM del_combo[] = {CTL_S, SFT_TEE, COMBO_END};
 const uint16_t PROGMEM cw_combo[] = {KC_D, KC_H, COMBO_END};
 const uint16_t PROGMEM col_combo[] = {KC_H, KC_COMM, COMBO_END};
-const uint16_t PROGMEM copy_combo[] = {KC_Z, KC_C, COMBO_END};
-const uint16_t PROGMEM cut_combo[] = {KC_Z, KC_X, COMBO_END};
-const uint16_t PROGMEM paste_combo[] = {KC_Z, KC_D, COMBO_END};
+/* const uint16_t PROGMEM copy_combo[] = {KC_Z, KC_C, COMBO_END}; */
+/* const uint16_t PROGMEM cut_combo[] = {KC_Z, KC_X, COMBO_END}; */
+/* const uint16_t PROGMEM paste_combo[] = {KC_Z, KC_D, COMBO_END}; */
 
 combo_t key_combos[] = {
     COMBO(esc_combo, KC_ESC),
     COMBO(del_combo, KC_DEL),
     COMBO(cw_combo, CW_TOGG),
     COMBO(col_combo, KC_COLN),
-    COMBO(copy_combo, CPY_MAC),
-    COMBO(cut_combo, CUT_MAC),
-    COMBO(paste_combo, PST_MAC),
+    /* COMBO(copy_combo, CPY_MAC), */
+    /* COMBO(cut_combo, CUT_MAC), */
+    /* COMBO(paste_combo, PST_MAC), */
 };
 // End of Combos //
 
