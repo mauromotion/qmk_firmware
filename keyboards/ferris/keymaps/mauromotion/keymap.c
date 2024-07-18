@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SFT_MINS RSFT_T(KC_MINS)
 #define CTL_EQL RCTL_T(KC_EQL)
 
-// i3wm aliases //
+// Window manager aliases //
 #define WS_1 LGUI(KC_1)
 #define WS_2 LGUI(KC_2)
 #define WS_3 LGUI(KC_3)
@@ -45,12 +45,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS_6 LGUI(KC_6)
 #define WS_7 LGUI(KC_7)
 #define WS_8 LGUI(KC_8)
-#define I3_LCK LGUI(KC_9)
+#define WS_9 LGUI(KC_9)
 
 // General aliases //
 #define LW_TAB LT(1,KC_TAB)
 #define RA_BSPC LT(2,KC_BSPC)
 #define SYM_ENT LT(3,KC_ENT)
+#define BUTT_Z LT(5, KC_Z)
 #define PIPE RSFT(KC_NUBS)
 
 // Tap dance //
@@ -64,6 +65,38 @@ tap_dance_action_t tap_dance_actions[] = {
 
 // Tap dance aliases
 #define Q_ESC TD(TD_Q_ESC)
+
+// Macros //
+enum custom_keycodes {
+  CPY_MAC = SAFE_RANGE,
+  CUT_MAC = SAFE_RANGE + 1,
+  PST_MAC = SAFE_RANGE + 2
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_achordion(keycode, record)) { return false; }
+  switch (keycode) {
+    case CPY_MAC:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("c"));
+      }
+      break;
+    case CUT_MAC:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("x"));
+      }
+      break;
+    case PST_MAC:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTL("v"));
+      }
+      break;
+    default:
+      // No action
+      break;
+  }
+  return true;
+};
 
 // Achordion //
 void matrix_scan_user(void) {
@@ -79,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      GUI_A,   ALT_R,   CTL_S,   SFT_TEE, KC_G,                         KC_M,    SFT_N,   CTL_E,   ALT_I,   GUI_O,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_QUOT,
+     BUTT_Z,  KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                          LW_TAB,  KC_SPC,     SYM_ENT, RA_BSPC
                                       //`-----------------'  `----------------'
@@ -91,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_DEL,  WS_4,    WS_5,    WS_6,    _______,                      KC_WH_U, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     _______, WS_7,    WS_8,    I3_LCK,  _______,                      KC_WH_D, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+     _______, WS_7,    WS_8,    WS_9,    _______,                      KC_WH_D, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                          _______, _______,    KC_BTN1, MO(4)
                                       //`-----------------'  `--------------'
@@ -105,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_QUES,  KC_7,    KC_8,    KC_9,   KC_NUBS,                      _______, _______,  _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                         MO(4),   UK_UNDS,    _______,  _______
+                                         MO(4),   UK_UNDS,    _______, _______
                                       //`-----------------'  `----------------'
    ),
 
@@ -129,42 +162,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F12,                       XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS, KC_NUM,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                         _______, _______,    _______,  _______
+                                         _______, _______,    _______, _______
                                       //`-----------------'  `----------------'
     ),
-};
 
-// Macros //
-enum custom_keycodes {
-  COPY_MACRO = SAFE_RANGE,
-  CUT_MACRO = SAFE_RANGE + 1,
-  PST_MACRO = SAFE_RANGE + 2
-};
-
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_achordion(keycode, record)) { return false; }
-  switch (keycode) {
-    case COPY_MACRO:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTL("c"));
-      }
-      break;
-    case CUT_MACRO:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTL("x"));
-      }
-      break;
-    case PST_MACRO:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LCTL("v"));
-      }
-      break;
-    default:
-      // No action
-      break;
-  }
-  return true;
+	[5] = LAYOUT_split_3x5_2( // Buttons
+  //,--------------------------------------------.                    ,--------------------------------------------.
+     _______, _______, _______, _______, _______,                      _______, PST_MAC,  CPY_MAC, CUT_MAC, _______,
+  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+     _______, _______, _______, _______, _______,                      _______, SFT_MINS, CTL_EQL, KC_LALT, KC_RGUI,
+  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+     _______, CUT_MAC, CPY_MAC, PST_MAC, _______,                      _______, _______,  _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+                                         _______, _______,    _______, _______
+                                      //`-----------------'  `----------------'
+   ),
 };
 
 // Achordion customisation
@@ -220,9 +232,9 @@ combo_t key_combos[] = {
     COMBO(del_combo, KC_DEL),
     COMBO(cw_combo, CW_TOGG),
     COMBO(col_combo, KC_COLN),
-    COMBO(copy_combo, COPY_MACRO),
-    COMBO(cut_combo, CUT_MACRO),
-    COMBO(paste_combo, PST_MACRO),
+    COMBO(copy_combo, CPY_MAC),
+    COMBO(cut_combo, CUT_MAC),
+    COMBO(paste_combo, PST_MAC),
 };
 // End of Combos //
 
