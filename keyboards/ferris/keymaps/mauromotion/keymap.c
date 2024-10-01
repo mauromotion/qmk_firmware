@@ -108,11 +108,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[0] = LAYOUT_split_3x5_2( // Default Colemak-DH
   //,--------------------------------------------.                    ,--------------------------------------------.
-     Q_ESC,   KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_SLSH,
+     Q_ESC,   KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      GUI_A,   ALT_R,   CTL_S,   SFT_TEE, KC_G,                         KC_M,    SFT_N,   CTL_E,   ALT_I,   GUI_O,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     BUTT_Z,  KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_QUOT,
+     BUTT_Z,  KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLASH,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                                          LW_TAB,  KC_SPC,     SYM_ENT, RA_BSPC
                                       //`-----------------'  `----------------'
