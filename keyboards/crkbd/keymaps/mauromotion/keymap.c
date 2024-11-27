@@ -57,6 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SYM_ENT LT(4,KC_ENT)
 #define RA_BSPC LT(2,KC_BSPC)
 #define PIPE RSFT(KC_NUBS)
+#define GAMES TT(05)
 
 // Achordion
 void matrix_scan_user(void) {
@@ -71,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
      KC_LSFT, GUI_A,   ALT_R,   CTL_S,   SFT_TEE, KC_G,                         KC_M,    SFT_N,   CTL_E,   ALT_I,   GUI_O,   KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     CTL_TAB, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, TT(05),
+     CTL_TAB, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, GAMES,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          GUI_ESC, LW_TAB,  KC_SPC,     SYM_ENT, RA_BSPC, ALT_DEL
                                       //`--------------------------'  `--------------------------'
@@ -204,6 +205,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case RA_BSPC:
         case KC_DEL:
+        case GAMES:
             return QUICK_TAP_TERM;
         default:
             return 0;
