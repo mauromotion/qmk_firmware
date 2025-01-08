@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[3] = LAYOUT_split_3x5_2( // Symbols
   //,--------------------------------------------.                    ,--------------------------------------------.
-     UK_GRV,  KC_EXLM, KC_AT,   UK_PND,  _______,                      KC_MPLY, KC_VOLU, KC_VOLD, KC_MUTE, _______,
+     UK_GRV,  KC_EXLM, KC_AT,   UK_PND,  _______,                      KC_MPLY, KC_VOLD, KC_VOLU, _______, KC_MUTE,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,                       KC_LT,   KC_LPRN, KC_LCBR, KC_LBRC, _______,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
