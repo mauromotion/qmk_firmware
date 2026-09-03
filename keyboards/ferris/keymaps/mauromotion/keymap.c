@@ -46,6 +46,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define WS_7 LGUI(KC_7)
 #define WS_8 LGUI(KC_8)
 #define WS_9 LGUI(KC_9)
+#define WS_10 LGUI(KC_0)
 
 // General aliases //
 #define LW_TAB LT(1,KC_TAB)
@@ -122,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------.                    ,--------------------------------------------.
      KC_ESC,  WS_1,    WS_2,    WS_3,    _______,                      KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     KC_DEL,  WS_4,    WS_5,    WS_6,    _______,                      KC_WH_U, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+     WS_10,  WS_4,    WS_5,    WS_6,    _______,                      KC_WH_U, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      _______, WS_7,    WS_8,    WS_9,    _______,                      KC_WH_D, KC_HOME, KC_PGDN, KC_PGUP, KC_END,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
